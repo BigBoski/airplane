@@ -5,6 +5,7 @@ var Flaps10Table = mongoose.model('Flaps10Table');
 var Flaps15Table = mongoose.model('Flaps15Table');
 var LandingTable = mongoose.model('LandingTable');
 var airplanectrl = require('../../app_server/controller/airplane');
+
 //utility method for the module
 var sendJSONresponse = function(res, status, content)
 {
@@ -15,7 +16,7 @@ var sendJSONresponse = function(res, status, content)
 
 /* GET a location by the id */
 module.exports.airplaneReadOne = function(req, res) {
-  console.log('Finding location details', req.params);
+  console.log('ClimbTable data', req.params);
   if (req.params && req.params.locationid) {
     ClimbTable
       .findById(req.params.locationid)
@@ -42,7 +43,7 @@ module.exports.airplaneReadOne = function(req, res) {
 };
 
 module.exports.airplaneReadTwo = function(req, res) {
-  console.log('Finding location details', req.params);
+  console.log('Flaps5Table data', req.params);
   if (req.params && req.params.locationid) {
     Flaps5Table
       .findById(req.params.locationid)
@@ -69,7 +70,7 @@ module.exports.airplaneReadTwo = function(req, res) {
 };
 
 module.exports.airplaneReadThree = function(req, res) {
-  console.log('Finding location details', req.params);
+  console.log('Flaps10Table data', req.params);
   if (req.params && req.params.locationid) {
     Flaps10Table
       .findById(req.params.locationid)
@@ -96,7 +97,7 @@ module.exports.airplaneReadThree = function(req, res) {
 };
 
 module.exports.airplaneReadFour = function(req, res) {
-  console.log('Finding location details', req.params);
+  console.log('Flaps15Table data', req.params);
   if (req.params && req.params.locationid) {
     Flaps15Table
       .findById(req.params.locationid)
@@ -123,7 +124,7 @@ module.exports.airplaneReadFour = function(req, res) {
 };
 
 module.exports.airplaneReadFive = function(req, res) {
-  console.log('Finding location details', req.params);
+  console.log('LandingTable data', req.params);
   if (req.params && req.params.locationid) {
     LandingTable
       .findById(req.params.locationid)
