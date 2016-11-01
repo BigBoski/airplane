@@ -1,0 +1,35 @@
+extends layout
+
+block content
+
+  table 
+    thead
+      tr
+        td#empty-cell 
+        td#special-cell(colspan="6") AT OR BELOW 20 C OAT
+        td#special-cell(colspan="6") ABOVE 20 C OAT
+      tr
+        td#special-cell WEIGHT/<br/>ALTITUDE
+        td 0
+        td 2000
+        td 4000
+        td 6000
+        td 8000
+        td 10000
+        td 0
+        td 2000
+        td 4000
+        td 6000
+        td 8000
+        td 10000
+    tbody
+    - for (var i = 0; i < table.length; i++){
+    - if (i % 13 == 0){
+    tr
+    - }
+    - if (i % 13 == 0){
+      td#weight-cell #{table[i]} KG
+    - } else {
+      td#regular-cell #{table[i][0]} / #{table[i][1]}
+    - }
+    - }
