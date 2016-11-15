@@ -18,6 +18,12 @@ module.exports.flaps15Table = function(req, res){
 module.exports.LandingTable = function(req, res){
   airplanectrl.LandingTable(req, res);
 };
+module.exports.Airport = function(req, res){
+  airplanectrl.Airport(req, res);
+};
+module.exports.runways = function(req, res){
+  airplanectrl.runways(req, res);
+};
 
 module.exports.renderToJadeOne = function(res, content){
     res.render('ClimbTable', { table: content });
@@ -26,5 +32,5 @@ module.exports.renderToJadeTwo = function(res, content){
     res.render('FlapsTable', { table: content });
 };
 module.exports.renderToJadeThree = function(res, content){
-    res.render('Flaps5Table', { table: content });
+    res.render('LandingTable', { table: content });
 };

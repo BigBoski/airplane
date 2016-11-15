@@ -4,6 +4,8 @@ var Flaps5Table = mongoose.model('Flaps5Table');
 var Flaps10Table = mongoose.model('Flaps10Table');
 var Flaps15Table = mongoose.model('Flaps15Table');
 var LandingTable = mongoose.model('LandingTable');
+var Airport = mongoose.model('Airport');
+var runways = mongoose.model('runways');
 var airplanectrl = require('../../app_server/controller/airplane');
 
 //utility method for the module
@@ -127,6 +129,60 @@ module.exports.airplaneReadFive = function(req, res) {
   console.log('LandingTable data', req.params);
   if (req.params && req.params.locationid) {
     LandingTable
+      .findById(req.params.locationid)
+      .exec(function(err, location) {
+        if (!location) {
+          sendJSONresponse(res, 404, {
+            "message": "locationid not found"
+          });
+          return;
+        } else if (err) {
+          console.log(err);
+          sendJSONresponse(res, 404, err);
+          return;
+        }
+        console.log(location);
+        sendJSONresponse(res, 200, location);
+      });
+  } else {
+    console.log('No locationid specified');
+    sendJSONresponse(res, 404, {
+      "message": "No locationid in request"
+    });
+  }
+};
+
+module.exports.Airports = function(req, res) {
+  console.log('Airport Data', req.params);
+  if (req.params && req.params.locationid) {
+    Airport
+      .findById(req.params.locationid)
+      .exec(function(err, location) {
+        if (!location) {
+          sendJSONresponse(res, 404, {
+            "message": "locationid not found"
+          });
+          return;
+        } else if (err) {
+          console.log(err);
+          sendJSONresponse(res, 404, err);
+          return;
+        }
+        console.log(location);
+        sendJSONresponse(res, 200, location);
+      });
+  } else {
+    console.log('No locationid specified');
+    sendJSONresponse(res, 404, {
+      "message": "No locationid in request"
+    });
+  }
+};
+
+module.exports.RunwayReadOne = function(req, res) {
+  console.log('LandingTable data', req.params);
+  if (req.params && req.params.locationid) {
+    runways
       .findById(req.params.locationid)
       .exec(function(err, location) {
         if (!location) {
